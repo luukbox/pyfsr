@@ -3,4 +3,4 @@ from .nlfsr import NLFSR
 from .fsr_function import FSRFunction
 
 name = "pyfsr"
-version = "0.0.2"
+version = "0.0.1"
