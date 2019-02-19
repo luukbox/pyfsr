@@ -5,12 +5,12 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    author='Lukas S. Müller',
+    author='Lukas Sebastian Müller',
     author_email='lukassebastianmueller@gmail.com',
     name=name,
     url='https://github.com/luukbox/pyfsr',
     version=version,
-    description='a Feedback Shift Register library for python',
+    description='a Feedback Shift Register toolkit for python',
     long_description=long_description,
     long_description_content_type="text/markdown",
     license='MIT',
