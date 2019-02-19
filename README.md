@@ -50,8 +50,8 @@ l = LFSR(poly=[3, 2], initstate=[0, 1, 0],
 print(l.sequence(5))
 # --> [1 0 1 0 0]
 
-fsrfunc = FSRFunction([4, 3, 'and', 0, 'xor'])
-l = LFSR(poly=[5, 3], initstate=[0, 1, 0, 1, 1], outfunc=out_func)
+fsrfunc = FSRFunction([4, 3, '*', 0, '+'])
+l = LFSR(poly=[5, 3], initstate=[0, 1, 0, 1, 1], outfunc=fsrfunc)
 print(l.shift())
 # --> 1 (l.state[4] and l.state[3] xor l.state[0])
 ```
@@ -63,14 +63,14 @@ Use a non linear input function. Otherwise the resulting FSR would be a less eff
 ```python
 from pyfsr import NLFSR, FSRFunction
 
-infunc = FSRFunction([3, 2, 4, "and", "xor"])
+infunc = FSRFunction([3, 2, 4, "*", "+"])
 nl = NLFSR(initstate=[0, 1, 0, 0, 1], infunc=infunc)
 print(nl.sequence(10))
 # --> [1 0 0 1 0 0 0 1 0 0]
 
-outfunc = FSRFunction([1, 2, 3, "xor", "xor"])
+outfunc = FSRFunction([1, 2, 3, "+", "+"])
 nl = NLFSR(initstate="ones", infunc=infunc,
-           outfunc=outfunc, size=5, initcycles=15)
+           outfunc=outfunc, size=5, initcycles=13)
 print(nl.sequence(10))
 # --> [1 1 1 0 1 1 1 0 1 1]
 ```
@@ -79,8 +79,13 @@ print(nl.sequence(10))
 
 Functions in [Reverse Polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation). Operands are indices of the solve methods parameter.
 
+Operators:
+
+- '\+' (xor)
+- '\*' (and)
+
 ```python
-fsrfunc = FSRFunction([4, 3, 'xor',  1, 2, 'and', 'xor'])
+fsrfunc = FSRFunction([4, 3, '+',  1, 2, '*', '+'])
 print(fsrfunc.solve([0, 1, 0, 0, 1]))
 # --> 1 [(0 xor 1) xor (0 and 1)]
 ```

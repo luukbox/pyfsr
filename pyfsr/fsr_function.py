@@ -6,7 +6,7 @@ class FSRFunction():
     Args:
         expression (list[int or str]): list of state indices and operators 
             of the function in reverse polish notation
-            supported operators: "and", "xor"
+            supported operators: "+" (xor), "*" (and)
     """
 
     def __init__(self, expression):
@@ -17,7 +17,7 @@ class FSRFunction():
             if isinstance(token, int):
                 operands_count += 1
                 self.expression.append(token)
-            elif token == 'xor' or token == 'and':
+            elif token == '+' or token == '*':
                 operators_count += 1
                 self.expression.append(token)
             else:
@@ -61,9 +61,9 @@ class FSRFunction():
                         "function expression invalid: not enough values on the stack to perform operation")
                 val1 = stack.pop()
                 val2 = stack.pop()
-                if token == 'xor':
+                if token == '+':  # (xor)
                     stack.append(np.logical_xor(val1, val2) * 1)
-                else:  # 'and' operator
+                else:  # '*' (and) operator
                     stack.append(np.logical_and(val1, val2) * 1)
 
         if not len(stack) == 1:

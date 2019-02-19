@@ -43,7 +43,7 @@ print("\nS4:", sequence.astype(int))
 initstate = [0, 1, 0, 1, 1]
 
 # reverse polish notation. stateindices start from 0
-fsrfunc = FSRFunction([4, 3, 'xor',  0, 1, 'xor', 'xor'])
+fsrfunc = FSRFunction([4, 3, '+',  0, 1, '+', '+'])
 
 print(fsrfunc.solve(initstate))
 # --> (1 xor 1) xor (0 xor 1) = 1
@@ -54,11 +54,11 @@ print()
 
 print("\nS5:", l.sequence(25))
 
-infunc = FSRFunction([3, 2, 4, "and", "xor"])
+infunc = FSRFunction([3, 2, 4, "*", "+"])
 nl = NLFSR(initstate=[0, 1, 0, 0, 1], infunc=infunc)
 print(nl.sequence(10))
 
-outfunc = FSRFunction([1, 2, 3, "xor", "xor"])
+outfunc = FSRFunction([1, 2, 3, "+", "+"])
 nl = NLFSR(initstate="ones", infunc=infunc,
            outfunc=outfunc, size=5, initcycles=15)
 print(nl.sequence(10))
