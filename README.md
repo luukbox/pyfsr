@@ -10,10 +10,10 @@ install with pip + github url
 
 ```bash
 # install
-$ pip install git+git://github.com/luukbox/pyfsr@master
+$ pip install -e git+git://github.com/luukbox/pyfsr@master#egg=pyfsr
 
 # upgrade
-$ pip install --upgrade git+git://github.com/luukbox/pyfsr@master
+$ pip install --upgrade -e git+git://github.com/luukbox/pyfsr@master#egg=pyfsr
 ```
 
 clone the repository and build it in your working directory
