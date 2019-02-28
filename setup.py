@@ -9,7 +9,7 @@ with open('requirements.txt', 'r') as fh:
 setup(
     author='Lukas Sebastian Müller',
     author_email='lukassebastianmueller@gmail.com',
-    name='pyfsr,
+    name='pyfsr',
     url='https://github.com/luukbox/pyfsr',
     version='0.0.1',
     description='a Feedback Shift Register toolkit for python',
