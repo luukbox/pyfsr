@@ -97,6 +97,9 @@ class NLFSR():
         self.__init__(initstate=self.initstate.tolist(),
                       infunc=self.infunc, outfunc=self.outfunc)
 
+    def __str__(self):
+        return f'nlfsr_{len(self.state)}_in({self.infunc})_out({self.outfunc})'
+
     def print_info(self):
         print('------%d bit NLFSR with------' %
               (len(self.state)))

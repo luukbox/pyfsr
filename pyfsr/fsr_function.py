@@ -36,7 +36,15 @@ class FSRFunction():
         self.__checked = True
 
     def __str__(self):
-        return " ".join(str(e) for e in self.expression)
+        out = []
+        for e in self.expression:
+            if e == "*":
+                out.append("and")
+            elif e == "+":
+                out.append("xor")
+            else:
+                out.append(str(e))
+        return "-".join(str(o) for o in out)
 
     def solve(self, fsr_state):
         """solves the function

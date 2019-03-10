@@ -155,6 +155,13 @@ class LFSR():
         self.poly = poly
         self.__check()
 
+    def __str__(self):
+        feedback = "ext"
+        if self.__internal_feedback:
+            feedback = "int"
+        poly = "-".join(str(p) for p in self.poly)
+        return f'lfsr_({poly})_{feedback}_out({self.outfunc})'
+
     def print_info(self):
         feedback = "External"
         if self.__internal_feedback:
