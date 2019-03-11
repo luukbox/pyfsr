@@ -160,7 +160,11 @@ class LFSR():
         if self.__internal_feedback:
             feedback = "int"
         poly = "-".join(str(p) for p in self.poly)
-        return f'lfsr_({poly})_{feedback}_out({self.outfunc})'
+        output = f'lfsr_({poly})_{feedback}'
+        if len(self.outfunc.expression) == 1:
+            # it's the primitive outfunction, so we ignore it
+            return output
+        return f'{output}_out({self.outfunc})'
 
     def print_info(self):
         feedback = "External"

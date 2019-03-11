@@ -98,7 +98,11 @@ class NLFSR():
                       infunc=self.infunc, outfunc=self.outfunc)
 
     def __str__(self):
-        return f'nlfsr_{len(self.state)}_in({self.infunc})_out({self.outfunc})'
+        output = f'nfsr_{len(self.state)}_in({self.infunc})'
+        if len(self.outfunc.expression) == 1:
+            # it's the primitive outfunction, so we ignore it
+            return output
+        return f'{output}_out({self.outfunc})'
 
     def print_info(self):
         print('------%d bit NLFSR with------' %
