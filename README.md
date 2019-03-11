@@ -54,6 +54,9 @@ fsrfunc = FSRFunction([4, 3, '*', 0, '+'])
 l = LFSR(poly=[5, 3], initstate=[0, 1, 0, 1, 1], outfunc=fsrfunc)
 print(l.shift())
 # --> 1 (l.state[4] and l.state[3] xor l.state[0])
+
+print(l) # type_poly_feedback[_outfunc]
+# --> lfsr_(5-3)_ext_out(4-3-and-0-xor)
 ```
 
 ## [NLFSR](https://en.wikipedia.org/wiki/Nonlinear-feedback_shift_register)
@@ -73,11 +76,14 @@ nl = NLFSR(initstate="ones", infunc=infunc,
            outfunc=outfunc, size=5, initcycles=13)
 print(nl.sequence(10))
 # --> [1 1 1 0 1 1 1 0 1 1]
+
+print(nl) # type_size_infunc[_outfunc]
+# --> nfsr_5_in(3-2-4-and-xor)_out(1-2-3-xor-xor)
 ```
 
 ## FSRFunction
 
-Functions in [Reverse Polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation). Operands are indices of the solve methods parameter.
+Functions in [Reverse Polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation). Operands are indices of the solve methods parameter (the FSR state).
 
 Operators:
 
