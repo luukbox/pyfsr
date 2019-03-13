@@ -68,7 +68,7 @@ for i in range(0, 160):
 # generate the actual sequence
 length = 2000
 sequence = np.ones(length) * -1
-for i in range(0, 2000):
+for i in range(0, length):
     lfsr.shift()
     nfsr.shift()
     nfsr.state[0] = np.logical_xor(lfsr.outbit, nfsr.state[0])
