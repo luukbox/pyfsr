@@ -62,7 +62,7 @@ class NLFSR():
         # if initcycles are set, we want to shift the register
         # n times in order to hide the initstate from the out sequence
         if initcycles > 0:
-            self.sequence(initcycles)
+            self.sequence(initcycles, show_progress=False)
             self.cycles = 0
             self.outbit = -1
             self.feedback_bit = -1
@@ -80,7 +80,7 @@ class NLFSR():
         self.cycles += 1
         return self.outbit
 
-    def sequence(self, n):
+    def sequence(self, n, show_progress=True):
         """generates a pseudo random sequence of length n
         Args:
             `n` (int): sequence length
@@ -88,8 +88,12 @@ class NLFSR():
             `np.array[int]`: binary sequence
         """
         seq = np.ones(n)
-        for i in tqdm(range(n), ascii=True, desc=f'Generating {n} bit sequence'):
-            seq[i] = self.shift()
+        if show_progress:
+            for i in tqdm(range(n), ascii=True, desc=f'Generating {n} bit sequence'):
+                seq[i] = self.shift()
+        else:
+            for i in range(n):
+                seq[i] = self.shift()
         return seq.astype(int)
 
     def reset(self):
