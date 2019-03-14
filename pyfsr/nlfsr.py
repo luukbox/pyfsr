@@ -5,6 +5,7 @@
 """
 
 import numpy as np
+from tqdm import tqdm
 from .fsr_function import FSRFunction
 
 
@@ -87,7 +88,7 @@ class NLFSR():
             `np.array[int]`: binary sequence
         """
         seq = np.ones(n)
-        for i in range(n):
+        for i in tqdm(range(n), ascii=True, desc=f'Generating {n} bit sequence'):
             seq[i] = self.shift()
         return seq.astype(int)
 
