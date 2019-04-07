@@ -1,7 +1,7 @@
 '''
-File name: e0.py
-Author: Lukas Müller
-Python Version: 3.6
+    File name: e0.py
+    Author: Lukas Müller
+    Python Version: 3.6
 '''
 
 import numpy as np
@@ -9,7 +9,7 @@ from pyfsr import LFSR
 
 '''
 Test Implementation of the E0 cipher:
-source: https://www.esat.kuleuven.be/cosic/publications/article-22.pdf
+https://www.esat.kuleuven.be/cosic/publications/article-22.pdf
 '''
 
 

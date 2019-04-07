@@ -1,7 +1,7 @@
 '''
-File name: grain.py
-Author: Lukas Müller
-Python Version: 3.6
+    File name: grain.py
+    Author: Lukas Müller
+    Python Version: 3.6
 '''
 
 import numpy as np
@@ -9,7 +9,7 @@ from pyfsr import LFSR, NLFSR, FSRFunction
 
 '''
 Test Implementation of the Grain v0 cipher:
-source: https: //cr.yp.to/streamciphers/grain/desc.pdf
+https: //cr.yp.to/streamciphers/grain/desc.pdf
 '''
 
 # 80 bit key

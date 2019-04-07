@@ -1,3 +1,9 @@
+"""
+    File name: fsr_function.py
+    Author: Lukas Müller
+    Python Version: 3.6
+"""
+
 import numpy as np
 
 

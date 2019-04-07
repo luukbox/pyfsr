@@ -8,8 +8,8 @@ import numpy as np
 from pyfsr import LFSR, FSRFunction
 
 '''
-Test Implementation of the A5/1 stream cipher used in GSM
-
+Test Implementation of the A5/1 stream cipher:
+https://link.springer.com/content/pdf/10.1007%2F978-3-540-85053-3_17.pdf
 '''
 
 # 64 bit key
