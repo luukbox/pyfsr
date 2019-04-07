@@ -1,4 +1,4 @@
-# pyfsr
+# pyfsr [![Build Status](https://travis-ci.com/luukbox/pyfsr.svg?branch=master)](https://travis-ci.com/luukbox/pyfsr)
 
 This module was developed in the course of a bachelor thesis and is in no way suitable for use in production. It enables a simple generation of pseudo random bit streams by providing linear and non-linear feedback shift register implementations.
 
