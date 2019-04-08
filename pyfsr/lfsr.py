@@ -7,6 +7,7 @@
 import numpy as np
 from tqdm import tqdm
 from .fsr_function import FSRFunction
+from .tools import roll, logical_xor
 
 
 class LFSR():
@@ -91,20 +92,20 @@ class LFSR():
 
     def __internal_feedback_shift(self):
         self.feedback_bit = self.state[-1]
-        self.state = np.roll(self.state, 1)
+        self.state = roll(self.state)
         for i in range(1, len(self.poly)):
-            self.state[self.poly[i]] = np.logical_xor(
-                self.feedback_bit, self.state[self.poly[i]]) * 1
+            self.state[self.poly[i]] = logical_xor(
+                self.feedback_bit, self.state[self.poly[i]], True) * 1
 
     def __external_feedback_shift(self):
         # compute feedback bit from state and polynomial
         self.feedback_bit = self.state[self.poly[0]-1]
         for i in range(1, len(self.poly)):
-            self.feedback_bit = np.logical_xor(
-                self.feedback_bit, self.state[self.poly[i]-1]) * 1  # * 1 casts bool to int
+            self.feedback_bit = logical_xor(
+                self.feedback_bit, self.state[self.poly[i]-1], True) * 1  # * 1 casts bool to int
 
         # shift the register once -> roll pushes the last bit (the outBit) to the beginning
-        self.state = np.roll(self.state, 1)
+        self.state = roll(self.state)
 
         # replace the outbit (now at index 0) with the feebackBit
         self.state[0] = self.feedback_bit

@@ -11,7 +11,7 @@ setup(
     author_email='lukassebastianmueller@gmail.com',
     name='pyfsr',
     url='https://github.com/luukbox/pyfsr',
-    version='1.0.0',
+    version='1.0',
     description='a Feedback Shift Register toolkit for python',
     long_description=long_description,
     long_description_content_type="text/markdown",

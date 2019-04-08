@@ -9,6 +9,13 @@ from tqdm import tqdm
 from .fsr_function import FSRFunction
 
 
+def roll(arr):
+    tmp1, tmp2 = arr[:-1], arr[-1]
+    arr[1:] = tmp1
+    arr[0] = tmp2
+    return arr
+
+
 class NLFSR():
     """Non Linear Feedback Shift Register
     Args:
@@ -75,7 +82,7 @@ class NLFSR():
         """
         self.outbit = self.outfunc.solve(self.state)
         self.feedback_bit = self.infunc.solve(self.state)
-        self.state = np.roll(self.state, 1)
+        self.state = roll(self.state)
         self.state[0] = self.feedback_bit
         self.cycles += 1
         return self.outbit
