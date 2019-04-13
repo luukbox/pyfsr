@@ -4,7 +4,7 @@
     Python Version: 3.6
 """
 
-import numpy as np
+from .tools import logical_and, logical_xor
 
 
 class FSRFunction():
@@ -56,7 +56,7 @@ class FSRFunction():
         """solves the function
         Args:
             fsr_state (list[int]): list of bits
-
+            ! Expects the fsr_state to consist of only bools or int in range [0,1]
         Returns:
             int: result of the operations
         """
@@ -76,9 +76,9 @@ class FSRFunction():
                 val1 = stack.pop()
                 val2 = stack.pop()
                 if token == '+':  # (xor)
-                    stack.append(np.logical_xor(val1, val2) * 1)
+                    stack.append(logical_xor(val1, val2, True) * 1)
                 else:  # '*' (and) operator
-                    stack.append(np.logical_and(val1, val2) * 1)
+                    stack.append(logical_and(val1, val2, True) * 1)
 
         if not len(stack) == 1:
             # this should actually never be the case, since we make sure that

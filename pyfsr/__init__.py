@@ -5,8 +5,9 @@
 """
 
 from .lfsr import LFSR
-from .nlfsr import NLFSR
 from .fsr_function import FSRFunction
+from .nlfsr import NLFSR
+from .tools import logical_and, logical_xor
 
 name = "pyfsr"
-version = "1.0.0"
+version = "1.0"
