@@ -18,9 +18,9 @@ key = 0xFAECFB0FAFA0FABA
 # convert the key to binary array
 key_bin = [int(x) for x in bin(key)[2:]]
 
-r1 = LFSR(poly=[19, 18, 17, 14], initstate=key_bin[:19])
-r2 = LFSR(poly=[23, 22, 21, 8], initstate=key_bin[19:19+23])
-r3 = LFSR(poly=[22, 21], initstate=key_bin[19+23:])
+r1 = LFSR(poly=[19, 18, 17, 14], initstate=key_bin[:19], initcycles=1000)
+r2 = LFSR(poly=[23, 22, 21, 8], initstate=key_bin[19:19+23], initcycles=1000)
+r3 = LFSR(poly=[22, 21], initstate=key_bin[19+23:], initcycles=1000)
 
 seq_len = 2**7
 sequence = np.ones(seq_len) * -1
