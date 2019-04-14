@@ -71,8 +71,6 @@ class NLFSR():
         if initcycles > 0:
             self.sequence(initcycles, show_progress=False)
             self.cycles = 0
-            self.outbit = -1
-            self.feedback_bit = -1
             self.initstate = self.state  # set the actual initstate
 
     def shift(self):
